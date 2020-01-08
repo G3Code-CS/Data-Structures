@@ -72,7 +72,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
     def remove_from_head(self):
         #Check if there is a head. Return none if no head
-        pass
+        node_value = self.head
+        self.delete(self.head)
+        return node_value.value
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -98,7 +100,9 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        node_value = self.tail
+        self.delete(self.tail)
+        return node_value.value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
@@ -149,15 +153,15 @@ class DoublyLinkedList:
     def __str__(self):
         return 'DLL:(head:'+ self.head.value+'tail:'+self.tail.value+')'
 
-new_dll = DoublyLinkedList()
+# new_dll = DoublyLinkedList()
 
-new_dll.add_to_head("5")
-print(new_dll)
-new_dll.add_to_head("7")
-print(new_dll)
-new_dll.add_to_tail("90")
-print(new_dll)
-new_dll.remove_from_head()
-print(new_dll)
-print(new_dll.remove_from_tail())
-print(new_dll)
+# new_dll.add_to_head("5")
+# print(new_dll)
+# new_dll.add_to_head("7")
+# print(new_dll)
+# new_dll.add_to_tail("90")
+# print(new_dll)
+# new_dll.remove_from_head()
+# print(new_dll)
+# print(new_dll.remove_from_tail())
+# print(new_dll)
