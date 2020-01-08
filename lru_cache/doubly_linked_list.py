@@ -34,6 +34,8 @@ class ListNode:
         if self.next:
             self.next.prev = self.prev
 
+    def __str__(self):
+        return 'NODE DETAILS: ' + str(self.value)
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
