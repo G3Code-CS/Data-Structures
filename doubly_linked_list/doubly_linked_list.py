@@ -111,7 +111,7 @@ class DoublyLinkedList:
             return
         
         if node is self.tail:
-            self.remove_from_tail
+            self.remove_from_tail()
         else:
             node.delete()
             self.length -= 1
@@ -124,11 +124,14 @@ class DoublyLinkedList:
             return 
         
         if node is self.head:
-            self.remove_from_head
+            self.remove_from_head()
         else:
             node.delete()
             self.length -= 1
         self.add_to_tail(node.value)
+
+    # def test_move_head_to_end(self):
+    #     self.move_to_end(self.head)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
@@ -148,20 +151,32 @@ class DoublyLinkedList:
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        if self.length == 0:
+            return 0
+        else:
+            max_val = self.head.value
+            cur_node = self.head.next
+            while (cur_node):
+                if (cur_node.value > max_val):
+                    max_val = cur_node.value
+                cur_node = cur_node.next
+            return max_val
+
+        
 
     def __str__(self):
-        return 'DLL:(head:'+ self.head.value+'tail:'+self.tail.value+')'
+        return 'DLL:(head:'+ self.head.value+' tail:'+self.tail.value+' Length is '+ str(self.length)+')'
 
 # new_dll = DoublyLinkedList()
 
 # new_dll.add_to_head("5")
 # print(new_dll)
-# new_dll.add_to_head("7")
+# new_dll.add_to_head("10")
 # print(new_dll)
-# new_dll.add_to_tail("90")
+# new_dll.add_to_head("15")
+# new_dll.test_move_head_to_end()
 # print(new_dll)
-# new_dll.remove_from_head()
+# new_dll.add_to_head("20")
 # print(new_dll)
-# print(new_dll.remove_from_tail())
+# new_dll.add_to_head("25")
 # print(new_dll)
