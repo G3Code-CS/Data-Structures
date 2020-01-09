@@ -38,7 +38,21 @@ class BinarySearchTree:
 
     # Return True if the tree contains the value
     # False if it does not
+
     def contains(self, target):
+        # current = self
+        # traverse_nodes = True
+        # while traverse_nodes:
+        #     if current.value is target:
+        #         return True
+        #     elif current.value > target and current.left:
+        #         current = current.left
+        #     elif current.value <= target and current.right:
+        #         current = current.right
+        #     elif current.value > target and not current.left:
+        #         return False
+        #     elif current.value < target and not current.right:
+        #         return False
         if self.value == target:
             return True
         if target < self.value:
