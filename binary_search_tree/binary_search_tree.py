@@ -89,10 +89,20 @@ class BinarySearchTree:
             return self.value
         self.right.get_max()
 
+        # current_tree_root = self
+        # while current_tree_root.right:
+        #     current_tree_root = current_tree_root.right
+        # return current_tree_root.value
+
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
