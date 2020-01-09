@@ -7,10 +7,34 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
+        #  solution without recursion
+        # current = self
+        # traverse_nodes = True
+        # while traverse_nodes:
+        #     if current.value > value and current.left:
+        #         current = current.left
+        #     elif current.value <= value and current.right:
+        #         current = current.right
+        #     elif current.value > value and not current.left:
+        #         current.left = BinarySearchTree(value)
+        #         traverse_nodes = False
+        #     elif current.value < value and not current.right:
+        #         current.right = BinarySearchTree(value)
+        #         traverse_nodes = False
         # check if new value is less than the current node
         if value < self.value:
             #is there already a value at self.left
-        pass
+            # If there is no self.left value set the new left child to be the value
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
+                self.left.insert(value)
+        else:
+            if not self.right:
+                self.right=BinarySearchTree(value)
+            else:
+                self.right.insert(value)
+
 
     # Return True if the tree contains the value
     # False if it does not
