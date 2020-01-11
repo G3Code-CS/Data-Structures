@@ -35,7 +35,7 @@ class ListNode:
             self.next.prev = self.prev
 
     def __str__(self):
-        return 'NODE DETAILS: ' + str(self.value)
+        return ("NODE LIST IS " + str(self.value))
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
@@ -143,11 +143,9 @@ class DoublyLinkedList:
             self.tail = None
         elif self.head is node:
             self.head = self.head.next
-            self.head.prev = None
             node.delete()
         elif self.tail is node:
             self.tail = self.tail.prev
-            self.tail.next = None
             node.delete()
         else:
             node.delete()
@@ -169,7 +167,7 @@ class DoublyLinkedList:
         
 
     def __str__(self):
-        return 'DLL:head: '+ str(self.head.value)+' DLL tail:'+str(self.tail.value) +' DLL Length is '+ str(self.length)
+        return 'DLL:(head:'+ self.head.value+' tail:'+self.tail.value+' Length is '+ str(self.length)+')'
 
 # new_dll = DoublyLinkedList()
 

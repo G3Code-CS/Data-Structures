@@ -1,3 +1,6 @@
+from doubly_linked_list import DoublyLinkedList
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +10,9 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.length = 0
+        self.storage = DoublyLinkedList()
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +22,19 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        current_node = self.storage.head
+        if self.storage.length == 1:
+            if key in current_node.value:
+                return current_node.value[key]
+        i = 1
+        while (i<self.storage.length+1):
+            if key in current_node.value:
+                self.storage.move_to_front(current_node)
+                return current_node.value[key] 
+            current_node = current_node.next
+            i += 1
+
+
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +47,49 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if self.length < self.limit:
+            self.length += 1
+            self.storage.add_to_head({key:value})
+        else:
+            keyPresent = self.isKeyInStorage(key)
+            print(keyPresent)
+            if (keyPresent):
+                self.storage.delete(keyPresent)
+            else:
+                self.storage.remove_from_tail()
+            self.storage.add_to_head({key:value})
+    
+    def isKeyInStorage(self, key):
+        i = 1
+        current_node = self.storage.head
+        print(self.storage.length)
+        while (i<self.storage.length+1):
+            print(current_node)
+            if key in current_node.value:
+                return current_node
+            current_node = current_node.next
+            i += 1
+        return None
+
+lru = LRUCache(3)
+print('**********************************************************')
+lru.set('item1','a')
+print(lru.storage)
+lru.set('item2','b')
+print(lru.storage)
+lru.set('item3','c')
+print(lru.storage)
+print(lru.get('item1'))
+print(lru.storage)
+lru.set('item4','d')
+print(lru.storage)
+print(lru.get('item1'))
+print(lru.storage)
+print(lru.get('item3'))
+print(lru.storage)
+print(lru.get('item4'))
+print(lru.storage)
+print(lru.get('item2'))
+print(lru.storage)
+print('**********************************************************')
+
